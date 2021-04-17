@@ -1,0 +1,36 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.iconTheme": "material-icon-theme",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[csharp]": {
+        "editor.wordWrap": "off",
+        "editor.defaultFormatter": "ms-dotnettools.csharp",
+        "editor.autoIndent": "brackets",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+        },
+        "files.trimFinalNewlines": true,
+        "editor.detectIndentation": true,
+        "editor.tabSize": 4,
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.fixAll.eslint": true
+    },
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "omnisharp.useEditorFormattingSettings": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "files.exclude": {
+        "**/obj/": true,
+        "**/bin/": true
+    },
+    "editor.smartSelect.selectLeadingAndTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": true,
+    "omnisharp.enableRoslynAnalyzers": true
+}
