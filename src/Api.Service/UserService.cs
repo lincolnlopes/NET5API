@@ -24,7 +24,7 @@ namespace Api.Service
             return await _repository.SelectAsync(id).ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<UserEntity>> GetAlll()
+        public async Task<IEnumerable<UserEntity>> GetAll()
         {
             return await _repository.SelectAsync().ConfigureAwait(false);
         }

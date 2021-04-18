@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Api.Data.Context;
-using Api.Domain.Entities;
+using Api.Domain.Interfaces.Services.User;
+using System.Net;
 
 namespace Api.Application.Controllers
 {
@@ -14,83 +10,19 @@ namespace Api.Application.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly MyContext _context;
-
-        public UserController(MyContext context)
-        {
-            _context = context;
-        }
-
         // GET: api/User
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserEntity>>> GetUsers()
+        public async Task<ActionResult> GetAll([FromServices] IUserService service)
         {
-            return await _context.Users.ToListAsync().ConfigureAwait(false);
-        }
-
-        // GET: api/User/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserEntity>> GetUserEntity(Guid id)
-        {
-            var userEntity = await _context.Users.FindAsync(id).ConfigureAwait(false);
-
-            return userEntity ?? (ActionResult<UserEntity>)NotFound();
-        }
-
-        // PUT: api/User/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserEntity(Guid id, UserEntity userEntity)
-        {
-            if (id != userEntity.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(userEntity).State = EntityState.Modified;
-
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
-                await _context.SaveChangesAsync().ConfigureAwait(false);
+                return Ok(await service.GetAll().ConfigureAwait(false));
             }
-            catch (DbUpdateConcurrencyException) when (!UserEntityExists(id))
+            catch (ArgumentException e)
             {
-                return NotFound();
+                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
-
-            return NoContent();
-        }
-
-        // POST: api/User
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<UserEntity>> PostUserEntity(UserEntity userEntity)
-        {
-            _context.Users.Add(userEntity);
-            await _context.SaveChangesAsync().ConfigureAwait(false);
-
-            return CreatedAtAction("GetUserEntity", new { id = userEntity.Id }, userEntity);
-        }
-
-        // DELETE: api/User/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUserEntity(Guid id)
-        {
-            var userEntity = await _context.Users.FindAsync(id).ConfigureAwait(false);
-            if (userEntity == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(userEntity);
-            await _context.SaveChangesAsync().ConfigureAwait(false);
-
-            return NoContent();
-        }
-
-        private bool UserEntityExists(Guid id)
-        {
-            return _context.Users.Any(e => e.Id == id);
         }
     }
 }
