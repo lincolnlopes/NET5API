@@ -23,6 +23,13 @@ docker run --name container-dev-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456
 dotnet ef migrations add InitialMigration
 dotnet ef database update
 
+## Instalar e atualizar ASPNET-CodeGenerator
+
+Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet aspnet-codegenerator controller -name UserController -m UserEntity -dc MyContext --relativeFolderPath Controllers --useDefaultLayout -api
+
 ## OTHERS LINKS
 
 https://lhargil.com/implement-idesigntimedbcontextfactory-with-configurationbuilder/
@@ -36,3 +43,10 @@ https://entityframeworkcore.com/knowledge-base/45892312/how-to-add-an-implementa
 https://stackoverflow.com/questions/36951010/usesqlserver-is-not-defined-in-dbcontextoptionbuilder
 
 https://www.connectionstrings.com/store-and-read-connection-string-in-appsettings-json/
+
+https://stackoverflow.com/questions/29110241/how-do-you-configure-the-dbcontext-when-creating-migrations-in-entity-framework
+https://stackoverflow.com/questions/46843367/how-to-setbasepath-in-configurationbuilder-in-core-2-0
+
+https://stackoverflow.com/questions/47060751/could-not-get-the-reflection-type-for-dbcontext
+
+https://docs.microsoft.com/pt-br/ef/core/cli/services
