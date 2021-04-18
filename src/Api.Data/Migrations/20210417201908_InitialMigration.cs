@@ -17,10 +17,7 @@ namespace Api.Data.Migrations
                     CreateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     UpdateAt = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Users", x => x.Id));
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
