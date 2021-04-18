@@ -10,7 +10,6 @@ namespace Api.Application.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-<<<<<<< HEAD
         private readonly IUserService _service;
         public UserController(IUserService service)
         {
@@ -19,30 +18,25 @@ namespace Api.Application.Controllers
         // GET: api/User
         [HttpGet]
         public async Task<ActionResult> GetAll()
-=======
         // GET: api/User
         [HttpGet]
         public async Task<ActionResult> GetAll([FromServices] IUserService service)
->>>>>>> 085d90f152ab68976c54bd3dd051f4cab51cb51f
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
-<<<<<<< HEAD
                 return Ok(await _service.GetAll().ConfigureAwait(false));
             }
             catch (ArgumentException e)
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
-=======
-                return Ok(await service.GetAll().ConfigureAwait(false));
-            }
+            return Ok(await service.GetAll().ConfigureAwait(false));
+        }
             catch (ArgumentException e)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
->>>>>>> 085d90f152ab68976c54bd3dd051f4cab51cb51f
-        }
+                return StatusCode((int) HttpStatusCode.InternalServerError, e.Message);
+    }
+}
     }
 }
