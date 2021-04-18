@@ -10,14 +10,19 @@ namespace Api.Application.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IUserService _service;
+        public UserController(IUserService service)
+        {
+            _service = service;
+        }
         // GET: api/User
         [HttpGet]
-        public async Task<ActionResult> GetAll([FromServices] IUserService service)
+        public async Task<ActionResult> GetAll()
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
-                return Ok(await service.GetAll().ConfigureAwait(false));
+                return Ok(await _service.GetAll().ConfigureAwait(false));
             }
             catch (ArgumentException e)
             {
