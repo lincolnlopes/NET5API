@@ -1,6 +1,9 @@
 {
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.minimap.enabled": false,
+    // render single child folders in a compact form
+    "explorer.compactFolders": false,
+    "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
     "workbench.iconTheme": "material-icon-theme",
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"

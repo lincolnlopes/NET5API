@@ -25,6 +25,8 @@ dotnet ef database update
 
 ## Instalar e atualizar ASPNET-CodeGenerator
 
+https://docs.microsoft.com/pt-br/aspnet/core/fundamentals/tools/dotnet-aspnet-codegenerator?view=aspnetcore-5.0
+
 Microsoft.VisualStudio.Web.CodeGeneration.Design
 
 dotnet tool install -g dotnet-aspnet-codegenerator
@@ -50,3 +52,5 @@ https://stackoverflow.com/questions/46843367/how-to-setbasepath-in-configuration
 https://stackoverflow.com/questions/47060751/could-not-get-the-reflection-type-for-dbcontext
 
 https://docs.microsoft.com/pt-br/ef/core/cli/services
+
+https://stackoverflow.com/questions/40900414/asp-net-core-dependency-injection-error-unable-to-resolve-service-for-type-whil
