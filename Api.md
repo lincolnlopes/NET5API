@@ -26,3 +26,13 @@ dotnet ef database update
 ## OTHERS LINKS
 
 https://lhargil.com/implement-idesigntimedbcontextfactory-with-configurationbuilder/
+
+https://stackoverflow.com/questions/40059929/cannot-find-the-usemysql-method-on-dbcontextoptions
+
+https://stackoverflow.com/questions/61777554/mysqldbcontextoptionsbuilder-does-not-contain-a-definition-for-serverversionhttps://github.com/docker-library/mysql/issues/275
+
+https://entityframeworkcore.com/knowledge-base/45892312/how-to-add-an-implementation-of--idesigntimedbcontextfactory-datacontext---to-the-project-in-asp-net-core-2-0
+
+https://stackoverflow.com/questions/36951010/usesqlserver-is-not-defined-in-dbcontextoptionbuilder
+
+https://www.connectionstrings.com/store-and-read-connection-string-in-appsettings-json/
